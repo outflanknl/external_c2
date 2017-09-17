@@ -12,7 +12,7 @@ This code is a POC, that in the end appeared to be the solution to a real life p
 
 ## Blog
 
-Read our blog for more info: https://www.outflank.nl/publications/
+Read our blog for more info: https://outflank.nl/blog/2017/09/17/blogpost-cobalt-strike-over-external-c2-beacon-home-in-the-most-obscure-ways/
 
 ## Installation
 
