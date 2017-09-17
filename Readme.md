@@ -3,12 +3,12 @@
 Cobalt Strike contains a new / experimental feature called external_c2. This bypasses the mallable profiles and allows the developper to craft it's own channels. 
 This code is a POC, that in the end appeared to be the solution to a real life problem.
 
-## Code Example
+## Code content
 
-c2file.c: a C implementation of the client (the process in talking to beacon)
-c2file_dll.c, c2file_dll.h, c2file.py: A python implementation of the client (using a dll, the process in talking to beacon) allowing for quick development of complex channels
-python_c2ex.py: The server talking to the external_c2 plugin of teamserver.
-externalc2_start.cna: the script needed to start the external_c2 on teamserver.
+- c2file.c: a C implementation of the client (the process in talking to beacon)
+- c2file_dll.c, c2file_dll.h, c2file.py: A python implementation of the client (using a dll, the process in talking to beacon) allowing for quick development of complex channels
+- python_c2ex.py: The server talking to the external_c2 plugin of teamserver.
+- externalc2_start.cna: the script needed to start the external_c2 on teamserver.
 
 ## Blog
 
