@@ -6,11 +6,11 @@ from time import sleep
 import struct
 
 def createSocket():
-  d = {}
-  d['sock'] = socket.create_connection(('192.168.1.51', 2222))
-  d['state'] = 1  
-  #sock.setblocking(1)
-  return (d)
+    d = {}
+    d['sock'] = socket.create_connection(('192.168.1.51', 2222))
+    d['state'] = 1  
+    #sock.setblocking(1)
+    return (d)
 
 def recv_frame(sock):
     try:
